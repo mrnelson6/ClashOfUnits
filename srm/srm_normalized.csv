@@ -1,0 +1,143 @@
+Category,Section,Current Adjustment,Granularity,Freq Total (4 seasons),Freq Per Season,Impact Per Season,Normalized Adjustment,Factor
+Passing Yards,Passing,0.1,per_yard,515427.0,128856.8,12885.7,0.002192,0.0219
+Passing TDs,Passing,1.0,play,3155.0,788.8,788.8,0.358162,0.3582
+Passing First Down,Passing,1.0,play,24660.0,6165.0,6165.0,0.045823,0.0458
+2-pt Conversion (Pass),Passing,1.0,play,167.0,41.8,41.8,6.766467,6.7665
+Pass Intercepted,Passing,1.0,play,1675.0,418.8,418.8,0.674627,0.6746
+Pick 6 Thrown,Passing,1.0,play,152.0,38.0,38.0,7.434211,7.4342
+Pass Completed,Passing,1.0,play,47163.0,11790.8,11790.8,0.023959,0.024
+Incomplete Pass,Passing,1.0,play,25744.0,6436.0,6436.0,0.043894,0.0439
+Pass Attempt,Passing,1.0,play,72907.0,18226.8,18226.8,0.015499,0.0155
+QB Sacked,Passing,1.0,play,5265.0,1316.2,1316.2,0.214625,0.2146
+40+ Yard Completion Bonus,Passing,1.0,play,1054.0,263.5,263.5,1.072106,1.0721
+40+ Yard Pass TD Bonus,Passing,1.0,play,391.0,97.8,97.8,2.890026,2.89
+50+ Yard Pass TD Bonus,Passing,1.0,play,243.0,60.8,60.8,4.650206,4.6502
+Rushing Yards,Rushing,0.1,per_yard,255040.0,63760.0,6376.0,0.004431,0.0443
+Rushing TD,Rushing,1.0,play,1973.0,493.2,493.2,0.572732,0.5727
+Rushing First Down,Rushing,1.0,play,14500.0,3625.0,3625.0,0.077931,0.0779
+2-pt Conversion (Rush),Rushing,1.0,play,89.0,22.2,22.2,12.696629,12.6966
+Rush Attempt,Rushing,1.0,play,58556.0,14639.0,14639.0,0.019298,0.0193
+40+ Yard Rush Bonus,Rushing,1.0,play,249.0,62.2,62.2,4.538153,4.5382
+40+ Yard Rush TD Bonus,Rushing,1.0,play,107.0,26.8,26.8,10.560748,10.5607
+50+ Yard Rush TD Bonus,Rushing,1.0,play,70.0,17.5,17.5,16.142857,16.1429
+Reception,Receiving,1.0,play,47163.0,11790.8,11790.8,0.023959,0.024
+Receiving Yards,Receiving,0.1,per_yard,515346.0,128836.5,12883.7,0.002193,0.0219
+Receiving TD,Receiving,1.0,play,3151.0,787.8,787.8,0.358616,0.3586
+Receiving First Down,Receiving,1.0,play,24655.0,6163.8,6163.8,0.045832,0.0458
+2-pt Conversion (Rec),Receiving,1.0,play,167.0,41.8,41.8,6.766467,6.7665
+0-4 Yard Reception Bonus,Receiving,1.0,play,8899.0,2224.8,2224.8,0.126981,0.127
+5-9 Yard Reception Bonus,Receiving,1.0,play,16510.0,4127.5,4127.5,0.068443,0.0684
+10-19 Yard Reception Bonus,Receiving,1.0,play,13901.0,3475.2,3475.2,0.081289,0.0813
+20-29 Yard Reception Bonus,Receiving,1.0,play,4073.0,1018.2,1018.2,0.277437,0.2774
+30-39 Yard Reception Bonus,Receiving,1.0,play,1324.0,331.0,331.0,0.853474,0.8535
+40-49 Yard Reception Bonus,Receiving,1.0,play,585.0,146.2,146.2,1.931624,1.9316
+50+ Yard Reception Bonus,Receiving,1.0,play,469.0,117.2,117.2,2.409382,2.4094
+Reception Bonus - RB,Receiving,1.0,play,9844.0,2461.0,2461.0,0.114791,0.1148
+Reception Bonus - WR,Receiving,1.0,play,26358.0,6589.5,6589.5,0.042871,0.0429
+Reception Bonus - TE,Receiving,1.0,play,10559.0,2639.8,2639.8,0.107018,0.107
+FG Made,Kicking,1.0,play,3625.0,906.2,906.2,0.311724,0.3117
+FG Made (0-19 yards),Kicking,1.0,play,8.0,2.0,2.0,141.25,141.25
+FG Made (20-29 yards),Kicking,1.0,play,937.0,234.2,234.2,1.205977,1.206
+FG Made (30-39 yards),Kicking,1.0,play,1120.0,280.0,280.0,1.008929,1.0089
+FG Made (40-49 yards),Kicking,1.0,play,933.0,233.2,233.2,1.211147,1.2111
+FG Made (50+ yards),Kicking,1.0,play,627.0,156.8,156.8,1.802233,1.8022
+Points per FG yard,Kicking,0.1,per_yard,137059.0,34264.8,3426.5,0.008245,0.0824
+Points per FG yard over 30,Kicking,0.1,per_yard,33090.0,8272.5,827.2,0.034149,0.3415
+PAT Made,Kicking,1.0,play,4607.0,1151.8,1151.8,0.245279,0.2453
+FG Missed,Kicking,1.0,play,639.0,159.8,159.8,1.768388,1.7684
+FG Missed (0-19 yards),Kicking,1.0,play,0.0,,,,
+FG Missed (20-29 yards),Kicking,1.0,play,19.0,4.8,4.8,59.473684,59.4737
+FG Missed (30-39 yards),Kicking,1.0,play,78.0,19.5,19.5,14.487179,14.4872
+FG Missed (40-49 yards),Kicking,1.0,play,254.0,63.5,63.5,4.448819,4.4488
+FG Missed (50+ yards),Kicking,1.0,play,288.0,72.0,72.0,3.923611,3.9236
+PAT Missed,Kicking,1.0,play,247.0,61.8,61.8,4.574899,4.5749
+Defense TD,Team Defense,1.0,play,220.0,55.0,55.0,5.136364,5.1364
+Points Allowed (0),Team Defense,1.0,team_game,22.0,5.5,5.5,51.363636,51.3636
+Points Allowed (1-6),Team Defense,1.0,team_game,82.0,20.5,20.5,13.780488,13.7805
+Points Allowed (7-13),Team Defense,1.0,team_game,309.0,77.2,77.2,3.656958,3.657
+Points Allowed (14-20),Team Defense,1.0,team_game,587.0,146.8,146.8,1.925043,1.925
+Points Allowed (21-27),Team Defense,1.0,team_game,545.0,136.2,136.2,2.073394,2.0734
+Points Allowed (28-34),Team Defense,1.0,team_game,400.0,100.0,100.0,2.825,2.825
+Points Allowed (35+),Team Defense,1.0,team_game,229.0,57.2,57.2,4.934498,4.9345
+Points per Point Allowed,Team Defense,1.0,per_yard,48668.0,12167.0,12167.0,0.023219,0.0232
+Less Than 100 Total Yards Allowed,Team Defense,1.0,team_game,5.0,1.2,1.2,226.0,226.0
+100-199 Yards Allowed,Team Defense,1.0,team_game,95.0,23.8,23.8,11.894737,11.8947
+200-299 Yards Allowed,Team Defense,1.0,team_game,588.0,147.0,147.0,1.921769,1.9218
+300-349 Yards Allowed,Team Defense,1.0,team_game,492.0,123.0,123.0,2.296748,2.2967
+350-399 Yards Allowed,Team Defense,1.0,team_game,491.0,122.8,122.8,2.301426,2.3014
+400-449 Yards Allowed,Team Defense,1.0,team_game,312.0,78.0,78.0,3.621795,3.6218
+450-499 Yards Allowed,Team Defense,1.0,team_game,132.0,33.0,33.0,8.560606,8.5606
+500-549 Yards Allowed,Team Defense,1.0,team_game,42.0,10.5,10.5,26.904762,26.9048
+550+ Yards Allowed,Team Defense,1.0,team_game,17.0,4.2,4.2,66.470588,66.4706
+Points per Yards Allowed,Team Defense,0.1,per_yard,737444.0,184361.0,18436.1,0.001532,0.0153
+3 and Out,Team Defense,1.0,play,4897.0,1224.2,1224.2,0.230754,0.2308
+4th Down Stop,Team Defense,1.0,play,1453.0,363.2,363.2,0.777701,0.7777
+Hit on QB (Team Def),Team Defense,1.0,play,11657.0,2914.2,2914.2,0.096937,0.0969
+Sack (Team Def),Team Defense,1.0,play,5265.0,1316.2,1316.2,0.214625,0.2146
+Sack Yards (Team Def),Team Defense,0.1,per_yard,35306.0,8826.5,882.7,0.032006,0.3201
+Interception (Team Def),Team Defense,1.0,play,1675.0,418.8,418.8,0.674627,0.6746
+Interception Yards (Team Def),Team Defense,0.1,per_yard,20665.0,5166.2,516.6,0.054682,0.5468
+Fumble Recovery (Team Def),Team Defense,1.0,play,1130.0,282.5,282.5,1.0,1.0
+Fumble Return Yards (Team Def),Team Defense,0.1,per_yard,4485.0,1121.2,112.1,0.251951,2.5195
+Tackle For Loss (Team Def),Team Defense,1.0,play,4915.0,1228.8,1228.8,0.229908,0.2299
+Assisted Tackle (Team Def),Team Defense,1.0,play,52713.0,13178.2,13178.2,0.021437,0.0214
+Solo Tackle (Team Def),Team Defense,1.0,play,78636.0,19659.0,19659.0,0.01437,0.0144
+Tackle (Team Def),Team Defense,1.0,play,131349.0,32837.2,32837.2,0.008603,0.0086
+Safety (Team Def),Team Defense,1.0,play,53.0,13.2,13.2,21.320755,21.3208
+Forced Fumble (Team Def),Team Defense,1.0,play,1709.0,427.2,427.2,0.661205,0.6612
+Blocked Kick,Team Defense,1.0,play,151.0,37.8,37.8,7.483444,7.4834
+Forced Punt,Team Defense,1.0,play,8587.0,2146.8,2146.8,0.131594,0.1316
+Pass Defended (Team Def),Team Defense,1.0,play,8907.0,2226.8,2226.8,0.126867,0.1269
+2-pt Conversion Returns,Team Defense,1.0,play,3.0,0.8,0.8,376.666667,376.6667
+Missed FG Return Yards (Team Def),Team Defense,0.1,per_yard,0.0,,,,
+Blocked Kick Return Yards (Team Def),Team Defense,0.1,per_yard,0.0,,,,
+Special Teams TD (D/ST),Special Teams D/ST,1.0,play,48.0,12.0,12.0,23.541667,23.5417
+Special Teams Forced Fumble (D/ST),Special Teams D/ST,1.0,play,139.0,34.8,34.8,8.129496,8.1295
+Special Teams Fumble Recovery (D/ST),Special Teams D/ST,1.0,play,136.0,34.0,34.0,8.308824,8.3088
+Special Teams Solo Tackle (D/ST),Special Teams D/ST,1.0,play,5093.0,1273.2,1273.2,0.221873,0.2219
+Punt Return Yards (D/ST),Special Teams D/ST,0.1,per_yard,34111.0,8527.8,852.8,0.033127,0.3313
+Kick Return Yards (D/ST),Special Teams D/ST,0.1,per_yard,86361.0,21590.2,2159.0,0.013085,0.1308
+Special Teams Player TD,Special Teams Player,1.0,play,48.0,12.0,12.0,23.541667,23.5417
+Special Teams Player Forced Fumble,Special Teams Player,1.0,play,139.0,34.8,34.8,8.129496,8.1295
+Special Teams Player Fumble Recovery,Special Teams Player,1.0,play,136.0,34.0,34.0,8.308824,8.3088
+Special Teams Player Solo Tackle,Special Teams Player,1.0,play,5093.0,1273.2,1273.2,0.221873,0.2219
+Player Punt Return Yards,Special Teams Player,0.1,per_yard,34111.0,8527.8,852.8,0.033127,0.3313
+Player Kick Return Yards,Special Teams Player,0.1,per_yard,86361.0,21590.2,2159.0,0.013085,0.1308
+Fumble,Misc,1.0,play,2068.0,517.0,517.0,0.546422,0.5464
+Fumble Lost,Misc,1.0,play,967.0,241.8,241.8,1.168563,1.1686
+Fumble Recovery TD,Misc,1.0,play,72.0,18.0,18.0,15.694444,15.6944
+100-199 Yard Rushing Game,Misc,1.0,game,409.0,102.2,102.2,2.762836,2.7628
+200+ Yard Rushing Game,Misc,1.0,game,6.0,1.5,1.5,188.333333,188.3333
+100-199 Yard Receiving Game,Misc,1.0,game,706.0,176.5,176.5,1.600567,1.6006
+200+ Yard Receiving Game,Misc,1.0,game,12.0,3.0,3.0,94.166667,94.1667
+300-399 Yard Passing Game,Misc,1.0,game,356.0,89.0,89.0,3.174157,3.1742
+400+ Yard Passing Game,Misc,1.0,game,38.0,9.5,9.5,29.736842,29.7368
+100-199 Combined Rush + Rec Yards,Misc,1.0,game,1509.0,377.2,377.2,0.74884,0.7488
+200+ Combined Rush + Rec Yards,Misc,1.0,game,29.0,7.2,7.2,38.965517,38.9655
+25+ Pass Completions,Misc,1.0,game,598.0,149.5,149.5,1.889632,1.8896
+20+ Carries,Misc,1.0,game,458.0,114.5,114.5,2.467249,2.4672
+First Down Bonus - RB,Misc,1.0,play,13788.0,3447.0,3447.0,0.081955,0.082
+First Down Bonus - WR,Misc,1.0,play,15693.0,3923.2,3923.2,0.072007,0.072
+First Down Bonus - TE,Misc,1.0,play,5501.0,1375.2,1375.2,0.205417,0.2054
+First Down Bonus - QB,Misc,1.0,play,27818.0,6954.5,6954.5,0.040621,0.0406
+IDP Touchdown,IDP,1.0,play,220.0,55.0,55.0,5.136364,5.1364
+Sack (IDP),IDP,1.0,play,5265.0,1316.2,1316.2,0.214625,0.2146
+Sack Yards (IDP),IDP,0.1,per_yard,35306.0,8826.5,882.7,0.032006,0.3201
+Hit on QB (IDP),IDP,1.0,play,12215.0,3053.8,3053.8,0.092509,0.0925
+Tackle (IDP),IDP,1.0,play,131349.0,32837.2,32837.2,0.008603,0.0086
+Tackle For Loss (IDP),IDP,1.0,play,4915.0,1228.8,1228.8,0.229908,0.2299
+"Blocked Punt, PAT, or FG (IDP)",IDP,1.0,play,151.0,37.8,37.8,7.483444,7.4834
+Interception (IDP),IDP,1.0,play,1675.0,418.8,418.8,0.674627,0.6746
+Interception Return Yards (IDP),IDP,0.1,per_yard,20665.0,5166.2,516.6,0.054682,0.5468
+Fumble Recovery (IDP),IDP,1.0,play,1130.0,282.5,282.5,1.0,1.0
+Fumble Recovery Return Yards (IDP),IDP,0.1,per_yard,4485.0,1121.2,112.1,0.251951,2.5195
+Forced Fumble (IDP),IDP,1.0,play,1709.0,427.2,427.2,0.661205,0.6612
+Safety (IDP),IDP,1.0,play,53.0,13.2,13.2,21.320755,21.3208
+Assisted Tackle (IDP),IDP,1.0,play,52713.0,13178.2,13178.2,0.021437,0.0214
+Solo Tackle (IDP),IDP,1.0,play,78636.0,19659.0,19659.0,0.01437,0.0144
+Pass Defended (IDP),IDP,1.0,play,8907.0,2226.8,2226.8,0.126867,0.1269
+10+ Tackle Bonus,IDP,1.0,game,1132.0,283.0,283.0,0.998233,0.9982
+2+ Sack Bonus,IDP,1.0,game,580.0,145.0,145.0,1.948276,1.9483
+3+ Pass Defended Bonus,IDP,1.0,game,259.0,64.8,64.8,4.362934,4.3629
+50+ Yard Interception Return TD Bonus,IDP,1.0,play,53.0,13.2,13.2,21.320755,21.3208
+50+ Yard Fumble Recovery Return TD Bonus,IDP,1.0,play,13.0,3.2,3.2,86.923077,86.9231

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRM Adjustment Equalizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== HERO ==================== -->
+  <section id="hero">
+    <div class="hero-content">
+      <h1>SRM Adjustment Equalizer</h1>
+      <p class="hero-subtitle">Your fantasy league's scoring rule changes aren't created equal.<br>Here's the data to prove it &mdash; and the fix.</p>
+      <div class="hero-stat">
+        <span id="spread-counter" class="spread-number">0</span><span class="spread-x">x</span>
+        <p class="hero-stat-label">The gap between our most and least impactful rule changes</p>
+      </div>
+      <div class="scroll-hint">Scroll to explore</div>
+    </div>
+  </section>
+
+  <!-- ==================== THE PROBLEM ==================== -->
+  <section id="problem" class="section">
+    <div class="container">
+      <h2 class="section-title">The Problem</h2>
+      <p class="section-desc">Under the current system, every scoring category gets the same +/-1 (or +/-0.1) adjustment. But some categories occur <strong>thousands of times</strong> per season, while others happen <strong>once or twice</strong>. The result? Some rule changes move mountains, and others do absolutely nothing.</p>
+      <p class="section-desc muted">Each bubble below is a scoring category. Size = seasonal point impact of a single +1 change. Hover for details.</p>
+      <div class="chart-wrapper">
+        <div id="bubble-chart"></div>
+      </div>
+      <div id="bubble-legend" class="legend"></div>
+    </div>
+  </section>
+
+  <!-- ==================== CALCULATOR ==================== -->
+  <section id="calculator" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">What Does Your +1 Actually Do?</h2>
+      <p class="section-desc">Pick any two categories and see how their impact compares under the current flat +/-1 system.</p>
+      <div class="calc-grid">
+        <div class="calc-card">
+          <label for="calc-cat1">Category A</label>
+          <select id="calc-cat1"></select>
+          <div class="calc-impact" id="calc-impact1">
+            <div class="calc-bar" id="calc-bar1"></div>
+            <span class="calc-value" id="calc-value1"></span>
+          </div>
+        </div>
+        <div class="calc-vs">vs</div>
+        <div class="calc-card">
+          <label for="calc-cat2">Category B</label>
+          <select id="calc-cat2"></select>
+          <div class="calc-impact" id="calc-impact2">
+            <div class="calc-bar" id="calc-bar2"></div>
+            <span class="calc-value" id="calc-value2"></span>
+          </div>
+        </div>
+      </div>
+      <div id="calc-comparison" class="calc-comparison"></div>
+    </div>
+  </section>
+
+  <!-- ==================== THE FIX ==================== -->
+  <section id="fix" class="section">
+    <div class="container">
+      <h2 class="section-title">The Fix</h2>
+      <p class="section-desc">Frequency normalization replaces the flat +/-1 with a custom increment for each category, so every rule change shifts the <strong>same number of points</strong> per season. No more dead categories.</p>
+      <div class="toggle-row">
+        <button id="toggle-btn" class="btn btn-primary">Show Normalized</button>
+        <span id="toggle-label" class="toggle-label">Currently: Original (unequal impact)</span>
+      </div>
+      <div class="chart-wrapper">
+        <canvas id="bar-chart-canvas"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SANDBOX + TABLE (combined for sticky) ==================== -->
+  <section id="sandbox" class="section">
+    <div class="container">
+      <h2 class="section-title">Play With It</h2>
+      <p class="section-desc">Experiment with different normalization strategies. The controls stick as you scroll the table.</p>
+
+      <!-- Sticky compact controls bar -->
+      <div class="sticky-controls">
+        <div class="sticky-inner">
+          <div class="controls-row">
+            <div class="ctrl-group">
+              <span class="ctrl-label">Mode</span>
+              <select id="norm-mode-select">
+                <option value="median" selected>Median</option>
+                <option value="mean">Mean</option>
+                <option value="custom">Custom</option>
+                <option value="matt">Matt's Rec</option>
+              </select>
+              <input type="range" id="custom-target" class="hidden" min="10" max="5000" value="283" step="10" title="Custom target">
+              <span id="custom-target-val" class="ctrl-val hidden">283</span>
+            </div>
+            <div class="ctrl-group">
+              <span class="ctrl-label">Min Cap</span>
+              <input type="range" id="cap-min" min="0.001" max="1.0" value="0.001" step="0.001">
+              <span id="cap-min-val" class="ctrl-val">Off</span>
+            </div>
+            <div class="ctrl-group">
+              <span class="ctrl-label">Max Cap</span>
+              <input type="range" id="cap-max" min="5" max="500" value="500" step="5">
+              <span id="cap-max-val" class="ctrl-val">Off</span>
+            </div>
+            <div class="ctrl-group">
+              <span class="ctrl-label">Round</span>
+              <select id="round-to">
+                <option value="0">None</option>
+                <option value="0.01">0.01</option>
+                <option value="0.05">0.05</option>
+                <option value="0.1">0.1</option>
+                <option value="0.25">0.25</option>
+                <option value="0.5">0.5</option>
+                <option value="1">1</option>
+              </select>
+            </div>
+            <div class="ctrl-group ctrl-stats">
+              <span title="Median frequency per season across all categories">Med Freq: <strong id="stat-med-freq">--</strong></span>
+              <span title="Mean frequency per season across all categories">Mean Freq: <strong id="stat-mean-freq">--</strong></span>
+              <span title="Target impact used for normalization">Target: <strong id="stat-target">282.5</strong></span>
+              <span title="Ratio between the most and least impactful categories after normalization">Spread: <strong id="stat-spread-after">1.0x</strong></span>
+              <span title="Categories whose factor was limited by min/max caps">Capped: <strong id="stat-capped">0</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data table -->
+      <h2 class="section-title" style="margin-top:24px">Every Category, Fully Transparent</h2>
+      <div class="table-controls">
+        <div id="section-filters" class="filter-tabs"></div>
+        <input type="text" id="table-search" class="search-input" placeholder="Search categories...">
+      </div>
+      <div class="table-scroll">
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th data-col="name" data-type="string">Category</th>
+              <th data-col="section" data-type="string">Section</th>
+              <th data-col="freqPerSeason" data-type="number">Freq / Season</th>
+              <th data-col="adjustment" data-type="number">Old Adj</th>
+              <th data-col="impact" data-type="number">Impact / Season</th>
+              <th data-col="normalizedAdj" data-type="number">New Adj</th>
+              <th data-col="factor" data-type="number">Factor</th>
+              <th data-col="adjustedImpact" data-type="number">Adj Impact / Season</th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MATT'S RECOMMENDATION ==================== -->
+  <section id="matt-rec" class="section">
+    <div class="container">
+      <h2 class="section-title">Matt's Recommendation: Bucketed Factors</h2>
+      <p class="section-desc">Pure math normalization is precise but messy in practice. This approach groups categories into <strong>seven impact tiers</strong>, each with a fixed factor. Easier to explain, simpler to vote on, and deliberately tempers the most extreme boosts so rare events stay impactful without being decisive.</p>
+
+      <div id="bucket-grid" class="bucket-grid"></div>
+
+      <div class="rationale-card">
+        <h3>The reasoning</h3>
+        <p><strong>Simplicity over precision.</strong> Seven buckets are easier to understand and debate than 142 unique multipliers. When your leaguemates vote on rule changes, nobody should need a spreadsheet to know what "0.0022 per yard" means.</p>
+        <p><strong>Rare shouldn't mean decisive.</strong> Pure frequency normalization would multiply a once-per-4-seasons event by ~377x &mdash; meaning if it happens, it single-handedly wins someone their week. These buckets deliberately under-boost the rarest categories compared to the mathematical ideal, so rare stats stay exciting without being game-deciders.</p>
+        <p><strong>Abundant stats stay calm.</strong> Categories that occur 2000+ times per season keep their factor at 1x. With that much volume, even the default adjustment has meaningful cumulative impact.</p>
+      </div>
+
+      <div class="matt-action">
+        <button id="enable-matt" class="btn btn-primary">Apply Matt's Recommendation to All Charts</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== METHODOLOGY ==================== -->
+  <section id="methodology" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Methodology</h2>
+      <div class="method-grid">
+        <div class="method-card">
+          <h3>Data Source</h3>
+          <p>4 NFL seasons (2021&ndash;2024) of play-by-play data from <strong>nflverse</strong>. Regular season only. 198,513 plays analyzed across 1,087 games.</p>
+        </div>
+        <div class="method-card">
+          <h3>Frequency Calculation</h3>
+          <p>Each category's occurrences counted per season. Play-level events from PBP data, game-level milestones from weekly stats, team defense from schedule data.</p>
+        </div>
+        <div class="method-card">
+          <h3>Normalization Formula</h3>
+          <p><code>New Adj = Old Adj &times; (Target Impact / Category Impact)</code><br>Where <code>Category Impact = Frequency/Season &times; Old Adjustment</code></p>
+        </div>
+      </div>
+      <div class="download-row">
+        <a href="srm_normalized.csv" download class="btn btn-primary">Download Full CSV</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Built with NFL data from <a href="https://github.com/nflverse" target="_blank">nflverse</a>. Analysis by frequency normalization.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
