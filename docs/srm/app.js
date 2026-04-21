@@ -22,9 +22,9 @@ const MATT_BUCKETS = [
   { min: 1.3,   max: 12,       factor: 100,  color: '#f97316', label: 'Very rare' },
   { min: 12,    max: 125,      factor: 10,   color: '#f59e0b', label: 'Rare' },
   { min: 125,   max: 400,      factor: 5,    color: '#84cc16', label: 'Uncommon' },
-  { min: 400,   max: 1200,     factor: 3,    color: '#22c55e', label: 'Common' },
-  { min: 1200,  max: 2000,     factor: 2,    color: '#06b6d4', label: 'Very common' },
-  { min: 2000,  max: Infinity, factor: 1,    color: '#3b82f6', label: 'Abundant' },
+  { min: 400,   max: 1100,     factor: 3,    color: '#22c55e', label: 'Common' },
+  { min: 1100,  max: 2700,     factor: 2,    color: '#06b6d4', label: 'Very common' },
+  { min: 2700,  max: Infinity, factor: 1,    color: '#3b82f6', label: 'Abundant' },
 ];
 function getMattBucket(impact) {
   return MATT_BUCKETS.find(b => impact >= b.min && impact < b.max)
@@ -611,7 +611,7 @@ function initMattSection() {
     const count = SRM_DATA.categories.filter(c =>
       c.impact && c.impact >= b.min && c.impact < b.max
     ).length;
-    const rangeStr = b.max === Infinity ? '2000+' : `${b.min} - ${b.max}`;
+    const rangeStr = b.max === Infinity ? `${b.min}+` : `${b.min} - ${b.max}`;
     return `
       <div class="bucket-card" style="border-top-color:${b.color}">
         <div class="bucket-label">${b.label}</div>
