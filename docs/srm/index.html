@@ -93,10 +93,10 @@
             <div class="ctrl-group">
               <span class="ctrl-label">Mode</span>
               <select id="norm-mode-select">
-                <option value="median" selected>Median</option>
+                <option value="median">Median</option>
                 <option value="mean">Mean</option>
                 <option value="custom">Custom</option>
-                <option value="matt">Matt's Rec</option>
+                <option value="matt" selected>Matt's Rec</option>
               </select>
               <input type="range" id="custom-target" class="hidden" min="10" max="5000" value="283" step="10" title="Custom target">
               <span id="custom-target-val" class="ctrl-val hidden">283</span>
@@ -123,6 +123,11 @@
                 <option value="1">1</option>
               </select>
             </div>
+            <div class="ctrl-group">
+              <label class="capture-toggle" title="Adjust for roster capture rate: positions with fewer viable NFL players get higher per-slot impact">
+                <input type="checkbox" id="capture-adj"> Capture
+              </label>
+            </div>
             <div class="ctrl-group ctrl-stats">
               <span title="Median frequency per season across all categories">Med Freq: <strong id="stat-med-freq">--</strong></span>
               <span title="Mean frequency per season across all categories">Mean Freq: <strong id="stat-mean-freq">--</strong></span>
@@ -136,6 +141,12 @@
 
       <!-- Data table -->
       <h2 class="section-title" style="margin-top:24px">Every Category, Fully Transparent</h2>
+      <div class="copy-row" style="margin-bottom:12px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <span class="muted" style="font-size:0.85rem">Copy for Appendix A:</span>
+        <select id="copy-section-select" style="padding:6px 10px; background:var(--surface); color:var(--text); border:1px solid var(--border); border-radius:6px; font-family:inherit; font-size:0.85rem;"></select>
+        <button id="copy-adj-btn" class="btn btn-primary" style="padding:6px 16px; font-size:0.85rem;">Copy Section</button>
+        <span id="copy-status" class="muted" style="font-size:0.85rem"></span>
+      </div>
       <div class="table-controls">
         <div id="section-filters" class="filter-tabs"></div>
         <input type="text" id="table-search" class="search-input" placeholder="Search categories...">
@@ -181,6 +192,51 @@
     </div>
   </section>
 
+  <!-- ==================== PLAYER IMPACT VIEWER ==================== -->
+  <section id="player-impact" class="section">
+    <div class="container">
+      <h2 class="section-title">Player Impact Viewer</h2>
+      <p class="section-desc">See how a rule change plays out on real 2024 player seasons. Pick a scoring category and see exactly how many more (or fewer) points each top player would earn under the old system vs. the current normalization settings.</p>
+
+      <div class="player-controls">
+        <div class="pos-tabs" id="pos-tabs">
+          <button class="pos-btn active" data-pos="QB">QB</button>
+          <button class="pos-btn" data-pos="RB">RB</button>
+          <button class="pos-btn" data-pos="WR">WR</button>
+          <button class="pos-btn" data-pos="TE">TE</button>
+          <button class="pos-btn" data-pos="K">K</button>
+          <button class="pos-btn" data-pos="DEF">DEF</button>
+          <button class="pos-btn" data-pos="IDP">IDP</button>
+        </div>
+        <div class="player-cat-select" id="player-cat-wrapper">
+          <label>Category:</label>
+          <button id="player-cat-btn" class="cat-dropdown-btn"></button>
+          <div id="player-cat-list" class="cat-dropdown-list hidden"></div>
+        </div>
+      </div>
+
+      <div class="player-table-scroll">
+        <table id="player-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Player</th>
+              <th>Team</th>
+              <th>Fant Pts (PPR)</th>
+              <th id="pth-stat">Stat Total</th>
+              <th>Old System Impact</th>
+              <th>Normalized Impact</th>
+              <th>Diff</th>
+              <th>Total Diff (All Stats)</th>
+            </tr>
+          </thead>
+          <tbody id="player-body"></tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:12px">Click a player row to expand their week-by-week breakdown. Categories requiring play-by-play data (40+ yard bonuses, reception brackets, kicking, defense, IDP) are not shown here.</p>
+    </div>
+  </section>
+
   <!-- ==================== METHODOLOGY ==================== -->
   <section id="methodology" class="section section-alt">
     <div class="container">
@@ -212,6 +268,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="data.js"></script>
+  <script src="player_data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
