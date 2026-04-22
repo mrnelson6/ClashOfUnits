@@ -18,8 +18,8 @@ const state = {
 
 // ============ MATT'S BUCKETS ============
 const MATT_BUCKETS = [
-  { min: 0,     max: 1.3,      factor: 1000, color: '#ef4444', label: 'Ultra-rare' },
-  { min: 1.3,   max: 12,       factor: 100,  color: '#f97316', label: 'Very rare' },
+  { min: 0,     max: 1.3,      factor: 300,  color: '#ef4444', label: 'Ultra-rare' },
+  { min: 1.3,   max: 12,       factor: 50,   color: '#f97316', label: 'Very rare' },
   { min: 12,    max: 125,      factor: 10,   color: '#f59e0b', label: 'Rare' },
   { min: 125,   max: 400,      factor: 5,    color: '#84cc16', label: 'Uncommon' },
   { min: 400,   max: 1100,     factor: 3,    color: '#22c55e', label: 'Common' },
