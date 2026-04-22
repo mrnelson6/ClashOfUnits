@@ -22,12 +22,12 @@ const BUCKET_COLORS = ['#ef4444','#f97316','#f59e0b','#84cc16','#22c55e','#06b6d
 let MATT_BUCKETS = [
   { min: 0,     max: 1.3,      factor: 100,  color: '#ef4444', label: 'Ultra-rare' },
   { min: 1.3,   max: 6,        factor: 50,   color: '#f97316', label: 'Very rare' },
-  { min: 6,     max: 125,      factor: 10,   color: '#f59e0b', label: 'Rare' },
-  { min: 125,   max: 400,      factor: 5,    color: '#84cc16', label: 'Uncommon' },
-  { min: 400,   max: 1100,     factor: 3,    color: '#22c55e', label: 'Common' },
-  { min: 1100,  max: 2700,     factor: 2,    color: '#06b6d4', label: 'Very common' },
-  { min: 2700,  max: 30000,    factor: 1,    color: '#3b82f6', label: 'Abundant' },
-  { min: 30000, max: Infinity, factor: 0.5,  color: '#6366f1', label: 'Massive' },
+  { min: 6,     max: 100,      factor: 10,   color: '#f59e0b', label: 'Rare' },
+  { min: 100,   max: 400,      factor: 5,    color: '#84cc16', label: 'Uncommon' },
+  { min: 400,   max: 1500,     factor: 3,    color: '#22c55e', label: 'Common' },
+  { min: 1500,  max: 5000,     factor: 2,    color: '#06b6d4', label: 'Very common' },
+  { min: 5000,  max: 18400,    factor: 1,    color: '#3b82f6', label: 'Abundant' },
+  { min: 18400, max: Infinity,  factor: 0.5,  color: '#6366f1', label: 'Massive' },
 ];
 function getMattBucket(impact) {
   return MATT_BUCKETS.find(b => impact >= b.min && impact < b.max)
@@ -908,7 +908,7 @@ function renderBucketEditor() {
 // ============ PLAYER IMPACT VIEWER ============
 const WEEKLY_STAT_MAP = [
   // Passing
-  { cat: 'Passing Yards',        cols: ['passing_yards'],           adj: 0.1 },
+  { cat: 'Passing Yards',        cols: ['passing_yards'],           adj: 0.02 },
   { cat: 'Passing TDs',          cols: ['passing_tds'],             adj: 1.0 },
   { cat: 'Passing First Down',   cols: ['passing_first_downs'],     adj: 1.0 },
   { cat: 'Pass Completed',       cols: ['completions'],             adj: 1.0 },
@@ -1181,11 +1181,13 @@ function updatePlayerCategoryOptions() {
   });
 }
 
-function calcTotalDiff(player) {
-  // Sum the diff across ALL applicable stat categories for this player
+function calcTotalDiff(player, pos) {
+  // Sum the diff across applicable stat categories for this player's position
   let total = 0;
   const breakdown = [];
   WEEKLY_STAT_MAP.forEach(m => {
+    // Skip categories restricted to other positions
+    if (m.pos && !m.pos.includes(pos)) return;
     const statVal = getStatVal(player.season, m);
     if (statVal === 0) return;
     const compCat = computed.valid.find(c => c.name === m.cat);
@@ -1198,9 +1200,10 @@ function calcTotalDiff(player) {
   return { total, breakdown };
 }
 
-function calcWeekTotalDiff(weekStats) {
+function calcWeekTotalDiff(weekStats, pos) {
   let total = 0;
   WEEKLY_STAT_MAP.forEach(m => {
+    if (m.pos && !m.pos.includes(pos)) return;
     const statVal = getStatVal(weekStats, m);
     if (statVal === 0) return;
     const compCat = computed.valid.find(c => c.name === m.cat);
@@ -1237,7 +1240,7 @@ function renderPlayerTable() {
     const rowId = `pw-${playerState.pos}-${i}`;
 
     // Cumulative diff across all stat categories
-    const { total: totalDiff, breakdown } = calcTotalDiff(p);
+    const { total: totalDiff, breakdown } = calcTotalDiff(p, playerState.pos);
     const tdClass = totalDiff > 0.05 ? 'impact-positive' : totalDiff < -0.05 ? 'impact-negative' : 'impact-neutral';
     const tdPrefix = totalDiff > 0 ? '+' : '';
 
@@ -1268,7 +1271,7 @@ function renderPlayerTable() {
       const wPpr = w.fantasy_points_ppr || 0;
 
       // Weekly cumulative diff
-      const wTotal = calcWeekTotalDiff(w);
+      const wTotal = calcWeekTotalDiff(w, playerState.pos);
       const wtClass = wTotal > 0.05 ? 'impact-positive' : wTotal < -0.05 ? 'impact-negative' : 'impact-neutral';
       const wtPre = wTotal > 0 ? '+' : '';
 

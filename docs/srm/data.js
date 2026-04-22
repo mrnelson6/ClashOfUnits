@@ -27,10 +27,10 @@ const SRM_DATA = {
     {
       "name": "Passing Yards",
       "section": "Passing",
-      "adjustment": 0.1,
+      "adjustment": 0.02,
       "granularity": "per_yard",
       "freqPerSeason": 128856.8,
-      "impact": 12885.7,
+      "impact": 2577.136,
       "normalizedAdj": 0.002192,
       "factor": 0.0219,
       "viablePool": 90
