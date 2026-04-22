@@ -572,7 +572,7 @@ body { padding-bottom: 64px; }
   text-overflow: ellipsis;
 }
 .cat-dropdown-btn:hover { border-color: var(--primary); }
-.cat-dropdown-btn::after { content: ' \u25BC'; font-size: 0.7rem; color: var(--text-muted); }
+.cat-dropdown-btn::after { content: ' \25BC'; font-size: 0.7rem; color: var(--text-muted); }
 .cat-dropdown-list {
   position: absolute;
   bottom: 100%;
