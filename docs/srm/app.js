@@ -24,7 +24,8 @@ const MATT_BUCKETS = [
   { min: 125,   max: 400,      factor: 5,    color: '#84cc16', label: 'Uncommon' },
   { min: 400,   max: 1100,     factor: 3,    color: '#22c55e', label: 'Common' },
   { min: 1100,  max: 2700,     factor: 2,    color: '#06b6d4', label: 'Very common' },
-  { min: 2700,  max: Infinity, factor: 1,    color: '#3b82f6', label: 'Abundant' },
+  { min: 2700,  max: 30000,    factor: 1,    color: '#3b82f6', label: 'Abundant' },
+  { min: 30000, max: Infinity, factor: 0.5,  color: '#6366f1', label: 'Massive' },
 ];
 function getMattBucket(impact) {
   return MATT_BUCKETS.find(b => impact >= b.min && impact < b.max)
